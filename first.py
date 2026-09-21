@@ -1,2 +1,1 @@
-first.py
-print("Hello, GitHub!")
+print("Hello World!")
