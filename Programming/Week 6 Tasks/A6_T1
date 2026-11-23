@@ -1,0 +1,20 @@
+def main():
+	print("Program starting.")
+	print("This program can read a file.")
+
+	Filename = input("Insert filename: ")
+
+	print('#### START "' + Filename + '" ####')
+
+	with open(Filename, "r") as File:
+		Content = File.read()
+
+	print(Content, end="")
+
+	print()
+	print('#### END "' + Filename + '" ####')
+
+	print("Program ending.")
+
+
+main()

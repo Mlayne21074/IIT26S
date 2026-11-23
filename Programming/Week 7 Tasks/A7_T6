@@ -1,0 +1,76 @@
+import random
+
+random.seed(1234)
+
+
+def main():
+	print("Program starting.")
+	print("Welcome to the rock-paper-scissors game!")
+
+	Name = input("Insert player name: ")
+
+	print("Welcome", Name + "!")
+	print("Your opponent is RPS-3PO.")
+	print("Game starts...")
+
+	PlayerWins = 0
+	BotWins = 0
+	Draws = 0
+
+	Choices = ["rock", "paper", "scissors"]
+
+	while True:
+		print()
+		print("Options:")
+		print("1 - Rock")
+		print("2 - Paper")
+		print("3 - Scissors")
+		print("0 - Quit game")
+
+		Choice = input("Your choice: ")
+
+		if Choice == "0":
+			break
+
+		if Choice not in ["1", "2", "3"]:
+			print("Invalid choice.")
+			continue
+
+		Player = int(Choice) - 1
+		Bot = random.randint(1, 3) - 1
+
+		PlayerChoice = Choices[Player]
+		BotChoice = Choices[Bot]
+
+		print("Rock! Paper! Scissors! Shoot!")
+		print()
+		print("#########################")
+		print(Name, "chose", PlayerChoice)
+		print("#########################")
+		print("RPS-3PO chose", BotChoice)
+		print("#########################")
+
+		if Player == Bot:
+			print("Draw! Both players chose", PlayerChoice + ".")
+			Draws = Draws + 1
+
+		elif (
+			(PlayerChoice == "rock" and BotChoice == "scissors")
+			or (PlayerChoice == "paper" and BotChoice == "rock")
+			or (PlayerChoice == "scissors" and BotChoice == "paper")
+		):
+			print(Name, PlayerChoice, "beats RPS-3PO", BotChoice + ".")
+			PlayerWins = PlayerWins + 1
+
+		else:
+			print("RPS-3PO", BotChoice, "beats", Name, PlayerChoice + ".")
+			BotWins = BotWins + 1
+
+	print("Results:")
+	print(Name, "- wins (" + str(PlayerWins) + "), losses (" + str(BotWins) + "), draws (" + str(Draws) + ")")
+	print("RPS-3PO - wins (" + str(BotWins) + "), losses (" + str(PlayerWins) + "), draws (" + str(Draws) + ")")
+
+	print("Program ending.")
+
+
+main()

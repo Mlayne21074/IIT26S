@@ -1,0 +1,56 @@
+from dataclasses import dataclass
+
+
+@dataclass
+class Timestamp:
+	weekday: str
+	hour: str
+	consumption: float
+	price: float
+
+
+def main():
+	print("Program starting.")
+
+	Filename = input("Insert filename: ")
+
+	print('Reading file "' + Filename + '".')
+
+	Timestamps = []
+
+	with open(Filename, "r") as File:
+		Header = File.readline()
+
+		for Line in File:
+			Line = Line.strip()
+
+			if Line == "":
+				continue
+
+			Columns = Line.split(";")
+
+			Day = Columns[0]
+			Hour = Columns[1]
+			Consumption = float(Columns[2])
+			Price = float(Columns[3])
+
+			Data = Timestamp(Day, Hour, Consumption, Price)
+
+			Timestamps.append(Data)
+
+	print("Electricity usage:")
+
+	for Data in Timestamps:
+		Total = Data.consumption * Data.price
+
+		print(
+			"- " + Data.weekday + " " + Data.hour + ":00, "
+			+ "price " + "{:.2f}".format(Data.price) + " €, "
+			+ "consumption " + "{:.2f}".format(Data.consumption)
+			+ " kWh, total " + "{:.2f}".format(Total) + " €"
+		)
+
+	print("Program ending.")
+
+
+main()

@@ -1,0 +1,44 @@
+def main():
+	print("Program starting.")
+
+	Filename = input("Insert filename: ")
+
+	print('Reading file "' + Filename + '".')
+
+	Weekdays = [
+		"Monday",
+		"Tuesday",
+		"Wednesday",
+		"Thursday",
+		"Friday",
+		"Saturday",
+		"Sunday"
+	]
+
+	Counts = [0, 0, 0, 0, 0, 0, 0]
+
+	with open(Filename, "r") as File:
+		Header = File.readline()
+
+		for Line in File:
+			Line = Line.strip()
+
+			if Line == "":
+				continue
+
+			Columns = Line.split(";")
+			Day = Columns[0]
+
+			for Index in range(len(Weekdays)):
+				if Day == Weekdays[Index]:
+					Counts[Index] = Counts[Index] + 1
+
+	print("Timestamp analysis:")
+
+	for Index in range(len(Weekdays)):
+		print(Weekdays[Index], "-", Counts[Index], "timestamps")
+
+	print("Program ending.")
+
+
+main()

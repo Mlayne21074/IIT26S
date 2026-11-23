@@ -1,0 +1,39 @@
+def main():
+	print("Program starting.")
+	print("This program analyses a list of names from a file.")
+
+	Filename = input("Insert filename to read: ")
+
+	print('Reading names from "' + Filename + '".')
+
+	Names = []
+
+	with open(Filename, "r") as File:
+		for Line in File:
+			Name = Line.strip()
+
+			if Name != "":
+				Names.append(Name)
+
+	print("Analysing names...")
+
+	Count = len(Names)
+
+	Shortest = min(len(Name) for Name in Names)
+	Longest = max(len(Name) for Name in Names)
+
+	Total = sum(len(Name) for Name in Names)
+	Average = Total / Count
+
+	print("Analysis complete!")
+	print("#### REPORT BEGIN ####")
+	print("Name count -", Count)
+	print("Shortest name -", Shortest, "chars")
+	print("Longest name -", Longest, "chars")
+	print("Average name - {:.2f} chars".format(Average))
+	print("#### REPORT END ####")
+
+	print("Program ending.")
+
+
+main()

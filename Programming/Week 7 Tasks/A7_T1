@@ -1,0 +1,25 @@
+def main():
+	print("Program starting.")
+
+	Numbers = []
+
+	while True:
+		Number = int(input("Insert positive integer: "))
+
+		if Number < 0:
+			break
+
+		if Number > 0:
+			Numbers.append(Number)
+
+	if len(Numbers) == 0:
+		print("No integers to display.")
+	else:
+		for Index in range(len(Numbers)):
+			Ordinal = Index + 1
+			print("Index", Index, "-", Ordinal, ":", Numbers[Index])
+
+	print("Program ending.")
+
+
+main()

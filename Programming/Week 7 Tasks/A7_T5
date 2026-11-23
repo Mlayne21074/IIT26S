@@ -1,0 +1,57 @@
+def main():
+    print("Program starting.")
+
+    Filename = input("Insert filename: ")
+
+    print('Reading file "' + Filename + '".')
+
+    Weekdays = [
+        "Monday",
+        "Tuesday",
+        "Wednesday",
+        "Thursday",
+        "Friday",
+        "Saturday",
+        "Sunday"
+    ]
+
+    Usage = [0, 0, 0, 0, 0, 0, 0]
+    Cost = [0, 0, 0, 0, 0, 0, 0]
+
+    with open(Filename, "r") as File:
+        Header = File.readline()
+
+        for Line in File:
+            Line = Line.strip()
+
+            if Line == "":
+                continue
+
+            Columns = Line.split(";")
+
+            Day = Columns[0]
+            Consumption = float(Columns[2])
+            Price = float(Columns[3])
+
+            for Index in range(len(Weekdays)):
+                if Day == Weekdays[Index]:
+                    Usage[Index] = Usage[Index] + Consumption
+                    Cost[Index] = Cost[Index] + (Consumption * Price)
+
+    print("Analysing timestamps.")
+    print("Displaying results.")
+
+    print("### Electricity consumption summary ###")
+
+    for Index in range(len(Weekdays)):
+        print(
+            "- " + Weekdays[Index]
+            + " usage " + "{:.2f}".format(Usage[Index])
+            + " kWh, cost " + "{:.2f}".format(Cost[Index]) + " €"
+        )
+
+    print("### Electricity consumption summary ###")
+    print("Program ending.")
+
+
+main()

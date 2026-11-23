@@ -1,0 +1,16 @@
+def main():
+	print("Program starting.")
+
+	FirstName = input("Insert first name: ")
+	LastName = input("Insert last name: ")
+	Filename = input("Insert filename: ")
+
+	with open(Filename, "w") as File:
+		File.write(FirstName + "\n")
+		File.write(LastName + "\n")
+		File.write("\n")
+
+	print("Program ending.")
+
+
+main()

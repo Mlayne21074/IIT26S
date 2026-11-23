@@ -1,0 +1,23 @@
+def main():
+	print("Program starting.")
+	print("This program can copy a file.")
+
+	Source = input("Insert source filename: ")
+	Destination = input("Insert destination filename: ")
+
+	print("Reading file '" + Source + "' content.")
+
+	with open(Source, "r") as File:
+		Content = File.read()
+
+	print("File content ready in memory.")
+	print("Writing content into file '" + Destination + "'.")
+
+	with open(Destination, "w") as File:
+		File.write(Content)
+
+	print("Copying operation complete.")
+	print("Program ending.")
+
+
+main()

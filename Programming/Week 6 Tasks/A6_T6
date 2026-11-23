@@ -1,0 +1,69 @@
+LOWER_ALPHABETS = "abcdefghijklmnopqrstuvwxyz"
+UPPER_ALPHABETS = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+
+
+def cipherText(Text):
+	Result = ""
+
+	for Letter in Text:
+		if Letter in LOWER_ALPHABETS:
+			Position = LOWER_ALPHABETS.index(Letter)
+			NewPosition = (Position + 13) % 26
+			Result = Result + LOWER_ALPHABETS[NewPosition]
+
+		elif Letter in UPPER_ALPHABETS:
+			Position = UPPER_ALPHABETS.index(Letter)
+			NewPosition = (Position + 13) % 26
+			Result = Result + UPPER_ALPHABETS[NewPosition]
+
+		else:
+			Result = Result + Letter
+
+	return Result
+
+
+def main():
+	print("Program starting.")
+	print()
+	print("Collecting plain text rows for ciphering.")
+
+	Text = ""
+
+	while True:
+		Line = input("Insert row (empty stops): ")
+
+		if Line == "":
+			break
+
+		Text = Text + cipherText(Line) + "\n"
+
+	print()
+	print("Choose an option:")
+	print("1 - Show ciphered text")
+	print("2 - Save ciphered text")
+
+	Choice = input("Your choice: ")
+
+	if Choice == "1":
+		print("#### Ciphered text ####")
+		print(Text)
+
+	elif Choice == "2":
+		Filename = input("Insert filename to save: ")
+
+		if Filename == "":
+			print("File name not defined.")
+			print("Aborting save operation.")
+		else:
+			with open(Filename, "w") as File:
+				File.write(Text)
+
+			print("Ciphered text saved!")
+
+	else:
+		print("Unknown option!")
+
+	print("Program ending.")
+
+
+main()

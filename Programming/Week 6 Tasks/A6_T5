@@ -1,0 +1,30 @@
+def main():
+	print("Program starting.")
+
+	Filename = input("Insert filename: ")
+
+	Numbers = []
+
+	with open(Filename, "r") as File:
+		for Line in File:
+			Number = int(Line.strip())
+			Numbers.append(Number)
+
+	Count = len(Numbers)
+	Total = sum(Numbers)
+	Greatest = max(Numbers)
+	Average = Total / Count
+
+	print("#### Number analysis - START ####")
+	print('File "' + Filename + '" results:')
+	print("Count;Sum;Greatest;Average")
+	print("{};{};{};{:.2f}".format(
+		Count, Total, Greatest, Average
+	))
+	print()
+	print("#### Number analysis - END ####")
+
+	print("Program ending.")
+
+
+main()

@@ -1,0 +1,37 @@
+def main():
+	print("Program starting.")
+
+	Text = input("Insert comma separated integers: ")
+
+	Values = Text.split(",")
+	Numbers = []
+
+	for Value in Values:
+		Value = Value.strip()
+
+		try:
+			Number = int(Value)
+			Numbers.append(Number)
+
+		except ValueError:
+			print("Invalid value '" + Value + "' detected.")
+
+	if len(Numbers) == 0:
+		print("No values to analyse.")
+
+	else:
+		Count = len(Numbers)
+		Total = sum(Numbers)
+
+		print("Count:", Count)
+		print("Sum:", Total)
+
+		if Total % 2 == 0:
+			print("The sum is even.")
+		else:
+			print("The sum is odd.")
+
+	print("Program ending.")
+
+
+main()
